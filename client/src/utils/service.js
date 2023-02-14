@@ -1,6 +1,6 @@
 import { toast } from "react-hot-toast";
-export const host = "http://localhost:5000";
-export const baseUrl = "http://localhost:5000/api";
+export const host = "https://chat-mern-ti5k.onrender.com";
+export const baseUrl = `${host}/api`;
 
 export const postRequest = async (url, body) => {
   const response = await fetch(`${baseUrl}/${url}`, {
