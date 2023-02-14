@@ -15,23 +15,11 @@ app.use(express.json());
 app.use("/api/auth", userRoutes);
 app.use("/api/message", messageRoutes);
 
-// --------------------------deployment------------------------------
+const port = process.env.PORT || 5000;
 
-const __dirname1 = "/Users/Bhu/Documents/builds/chatapp/";
-
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname1, "/client/build")));
-
-  app.get("*", (req, res) =>
-    res.sendFile(path.resolve(__dirname1, "client", "build", "index.html"))
-  );
-} else {
-  app.get("/", (req, res) => {
-    res.send("API is running..");
-  });
-}
-
-// --------------------------deployment------------------------------
+app.get("/", (req, res) => {
+  res.send("API is running..");
+});
 
 mongoose
   .connect(process.env.DB_URL, {
